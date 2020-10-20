@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Final Project Mobile</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="registerButton">Register</string>
+    <string name="free">Free</string>
+    <string name="premium">Premium ($4.99/month)</string>
+    <string name="gold">Gold ($9.95/month)</string>
+    <string name="register"><u>Register as a new user</u></string>
+    <string name="anonymous"><u>Continue anonymously</u></string>
+    <string name="welcome">Welcome</string>
+</resources>
