@@ -27,36 +27,25 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
     }
 
-    /*public void addUser(View view){
+    public void goToNewUserActivity(View view){
         UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //dbHelper.onUpgrade(db, 0, 0); // When I want to clean the database
+        User user = new User();
 
         EditText username = (EditText)findViewById(R.id.username);
         EditText password = (EditText)findViewById(R.id.password);
         EditText email = (EditText)findViewById(R.id.email);
         RadioGroup typeButton = (RadioGroup)findViewById(R.id.type);
 
-        String userUsername = username.getText().toString();
-        String userEmail = email.getText().toString();
-        String userPassword = password.getText().toString();
+        user.setUsername(username.getText().toString());
+        user.setEmail(email.getText().toString());
+        user.setPassword(password.getText().toString());
         int selectedType = typeButton.getCheckedRadioButtonId();
-        RadioButton type = (RadioButton)findViewById(selectedType);
-        String userType = type.getText().toString();
+        user.setType(selectedType);
 
-        ContentValues values = new ContentValues();
-        values.put(UserContract.UserEntry.COLUMN_NAME_USERNAME, userUsername);
-        values.put(UserContract.UserEntry.COLUMN_NAME_PASSWORD, userPassword);
-        values.put(UserContract.UserEntry.COLUMN_NAME_EMAIL, userEmail);
-        values.put(UserContract.UserEntry.COLUMN_NAME_TYPE, userType);
+        dbHelper.addUser(db, user);
 
-        //long newRowId = db.insert(UserContract.UserEntry.TABLE_NAME, null, values);
-
-        Intent intent = new Intent(this, NewUserActivity.class);
-        //intent.putExtra(MESSAGE_KEY, userUsername);
-        startActivity(intent);
-    }*/
-
-    public void goToNewUserActivity(View view){
         Intent intent = new Intent(this, NewUserActivity.class);
         startActivity(intent);
     }

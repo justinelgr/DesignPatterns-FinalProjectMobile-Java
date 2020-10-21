@@ -1,8 +1,10 @@
 package com.example.finalprojectmobile;
 
+import java.lang.reflect.Type;
+
 public class User {
 
-    enum UserType {free, premium, gold};
+    enum UserType {FREE, PREMIUM, GOLD};
 
     // private field that refers to the object
     private static User singleUser;
@@ -32,14 +34,14 @@ public class User {
     public String getType(){
         return String.valueOf(this.type);
     }
-    public void setType(String type){
+    public void setType(int selectedType){
         UserType uType;
-        if(type == "Free"){
-            uType = UserType.free;
-        } else if (type == "Premium ($4.99/month)"){
-            uType = UserType.premium;
+        if(selectedType == 2131230831){
+            uType = UserType.FREE;
+        } else if (selectedType == 2131230882){
+            uType = UserType.PREMIUM;
         } else{
-            uType = UserType.gold;
+            uType = UserType.GOLD;
         }
         this.type = uType;
     }
