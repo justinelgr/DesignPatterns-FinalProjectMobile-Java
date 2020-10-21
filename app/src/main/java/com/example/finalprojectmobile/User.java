@@ -4,10 +4,11 @@ import java.lang.reflect.Type;
 
 public class User {
 
-    enum UserType {FREE, PREMIUM, GOLD};
+    public enum UserType {FREE, PREMIUM, GOLD};
 
     // private field that refers to the object
     private static User singleUser;
+
     private String email;
     public String username;
     private String password;
@@ -47,7 +48,7 @@ public class User {
     }
 
     User() {
-        // constructor of the SingletonExample class
+        // constructor of the User class
         email = new String();
         username = new String();
         password = new String();
@@ -62,13 +63,5 @@ public class User {
 
         // returns the singleton object
         return singleUser;
-    }
-
-    public User createUser(User newUser, String email, String username, String password, UserType type){
-        newUser.email = email;
-        newUser.username = username;
-        newUser.password = password;
-        newUser.type = type;
-        return newUser;
     }
 }

@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         //dbHelper.onUpgrade(db, 0, 0); // When I want to clean the database
-        User user = new User();
+        User user = User.getInstance();
 
         EditText username = (EditText)findViewById(R.id.username);
         EditText password = (EditText)findViewById(R.id.password);

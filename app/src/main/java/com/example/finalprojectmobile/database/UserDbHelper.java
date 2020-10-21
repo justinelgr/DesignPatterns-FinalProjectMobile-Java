@@ -73,4 +73,33 @@ public class UserDbHelper extends SQLiteOpenHelper {
         }
         return displayUsers;
     }
+
+    public void deleteTable(SQLiteDatabase db){
+        db.execSQL(SQL_DELETE_ENTRIES);
+    }
+
+    public User findUser(SQLiteDatabase db, String username){
+        User user = User.getInstance();
+        user.setUsername(username);
+        String USER_FIND_USERNAME = "SELECT * FROM " + UserContract.UserEntry.TABLE_NAME +
+                " WHERE USERNAME = '" + username + "'";
+        Cursor cursor = db.rawQuery(USER_FIND_USERNAME, null);
+        if(cursor.moveToFirst()){
+            user.setPassword(cursor.getString(2));
+            user.setEmail(cursor.getString(3));
+            String type = cursor.getString(4);
+            if(type == "FREE"){
+                user.setType(2131230831);
+            } else if(type == "PREMIUM"){
+                user.setType(2131230882);
+            } else {
+                user.setType(0);
+            }
+        } else {
+            User notFound = User.getInstance();
+            notFound.setUsername("USER NOT FOUND");
+            return notFound;
+        }
+        return user;
+    }
 }
