@@ -18,11 +18,8 @@ public class NewUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
 
-        UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        TextView tv = (TextView)findViewById(R.id.listUsers);
-        String list = dbHelper.displayUsers(db);
-        tv.setText(list);
+        TextView tv = (TextView)findViewById(R.id.newUser);
+        User user = (User)getIntent().getSerializableExtra("User");
+        tv.setText(user.getUsername());
     }
 }

@@ -1,8 +1,9 @@
 package com.example.finalprojectmobile;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 
-public class User {
+public class User implements Serializable {
 
     public enum UserType {FREE, PREMIUM, GOLD};
 

@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import com.example.finalprojectmobile.database.UserDbHelper;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 wrongLogin.show();
             } else{ //------------------------------- Correct username and correct password
                 Intent intent = new Intent(this, LoggedInActivity.class);
+                intent.putExtra("User", user);
                 startActivity(intent);
             }
         }

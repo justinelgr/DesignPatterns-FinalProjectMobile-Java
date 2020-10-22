@@ -74,6 +74,18 @@ public class UserDbHelper extends SQLiteOpenHelper {
         return displayUsers;
     }
 
+    public String displayUsernames(SQLiteDatabase db){
+        List<String> usernames = new ArrayList<>();
+        Cursor cursor = db.rawQuery(USER_SELECT_ALL, null);
+        String displayUsernames = "";
+        cursor.moveToFirst();
+        for(int i = 0; i < cursor.getCount(); i++){
+            displayUsernames += cursor.getString(1) + "\n";
+            cursor.moveToNext();
+        }
+        return displayUsernames;
+    }
+
     public void deleteTable(SQLiteDatabase db){
         db.execSQL(SQL_DELETE_ENTRIES);
     }
