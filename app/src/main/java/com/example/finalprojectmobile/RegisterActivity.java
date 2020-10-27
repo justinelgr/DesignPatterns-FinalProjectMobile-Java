@@ -2,7 +2,6 @@ package com.example.finalprojectmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,13 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
-import com.example.finalprojectmobile.database.UserContract;
 import com.example.finalprojectmobile.database.UserDbHelper;
+import com.example.finalprojectmobile.user.User;
 import com.google.android.material.snackbar.Snackbar;
-
-import org.w3c.dom.Text;
 
 public class RegisterActivity extends AppCompatActivity {
 

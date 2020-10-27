@@ -93,6 +93,8 @@
         android:id="@+id/anonymous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="goToLoggedInActivityAnonymous"
         android:text="@string/anonymous"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

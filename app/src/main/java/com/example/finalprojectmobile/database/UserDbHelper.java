@@ -6,16 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.example.finalprojectmobile.User;
+import com.example.finalprojectmobile.user.User;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class UserDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;

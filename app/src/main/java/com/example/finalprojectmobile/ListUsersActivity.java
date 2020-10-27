@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.finalprojectmobile.database.UserDbHelper;
+import com.example.finalprojectmobile.user.User;
 
 public class ListUsersActivity extends AppCompatActivity {
 

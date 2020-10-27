@@ -1,11 +1,12 @@
-package com.example.finalprojectmobile;
+package com.example.finalprojectmobile.user;
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
 
 public class User implements Serializable {
 
     public enum UserType {FREE, PREMIUM, GOLD};
+    public static int FREEint = 2131230831;
+    public static int PREMIUMint = 2131230882;
 
     // private field that refers to the object
     private static User singleUser;
@@ -38,9 +39,9 @@ public class User implements Serializable {
     }
     public void setType(int selectedType){
         UserType uType;
-        if(selectedType == 2131230831){
+        if(selectedType == FREEint){
             uType = UserType.FREE;
-        } else if (selectedType == 2131230882){
+        } else if (selectedType == PREMIUMint){
             uType = UserType.PREMIUM;
         } else{
             uType = UserType.GOLD;

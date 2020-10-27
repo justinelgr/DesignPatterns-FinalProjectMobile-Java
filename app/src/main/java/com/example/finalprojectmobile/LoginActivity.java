@@ -5,15 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import com.example.finalprojectmobile.database.UserDbHelper;
+import com.example.finalprojectmobile.user.AnonymousUser;
+import com.example.finalprojectmobile.user.AnonymousUserAdapter;
+import com.example.finalprojectmobile.user.User;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,6 +52,16 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goToRegisterActivity(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToLoggedInActivityAnonymous(View view){
+        AnonymousUser au = new AnonymousUser();
+        AnonymousUserAdapter aua = new AnonymousUserAdapter();
+        aua.MakeUserAnonymous(au);
+        User user = aua.user;
+        Intent intent = new Intent(this, LoggedInActivity.class);
+        intent.putExtra("User", user);
         startActivity(intent);
     }
 }

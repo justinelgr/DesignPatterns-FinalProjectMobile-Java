@@ -12,6 +12,7 @@
     <string name="anonymous"><u>Continue anonymously</u></string>
     <string name="welcome">Welcome</string>
     <string name="welcomeBack">Welcome back</string>
+    <string name="welcomeAnonymous">Welcome anonymous user</string>
     <string name="profile">View my profile</string>
     <string name="browse">Browse uploaded photos</string>
     <string name="users">See list of users</string>
