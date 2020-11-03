@@ -64,4 +64,9 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("User", user);
         startActivity(intent);
     }
+
+    public void goToAdministratorActivity(View view){
+        Intent intent = new Intent(this, AdministratorLoginActivity.class);
+        startActivity(intent);
+    }
 }

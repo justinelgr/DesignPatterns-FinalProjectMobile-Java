@@ -24,6 +24,12 @@ public class ListUsersActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         TextView list = (TextView)findViewById(R.id.list);
-        list.setText(dbHelper.displayUsernames(db));
+
+        if(user.getAdministrator() == 0){
+            list.setText(dbHelper.displayUsernames(db));
+        }
+        else if(user.getAdministrator() == 1){
+            list.setText(dbHelper.displayUsers(db));
+        }
     }
 }

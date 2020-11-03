@@ -15,6 +15,7 @@ public class User implements Serializable {
     public String username;
     private String password;
     private UserType type;
+    private int administrator;
 
     public String getEmail(){
         return this.email;
@@ -48,6 +49,12 @@ public class User implements Serializable {
         }
         this.type = uType;
     }
+    public int getAdministrator(){
+        return this.administrator;
+    }
+    public void setAdministrator(int administrator){
+        this.administrator = administrator;
+    }
 
     User() {
         // constructor of the User class
@@ -65,5 +72,9 @@ public class User implements Serializable {
 
         // returns the singleton object
         return singleUser;
+    }
+
+    void decorate(){
+        administrator = 1;
     }
 }
