@@ -19,4 +19,16 @@
     <string name="browse">Browse uploaded photos</string>
     <string name="users">See list of users</string>
     <string name="list">List of registered users</string>
+    <string name="isUser">User</string>
+    <string name="isAdministrator">Administrator</string>
+    <string name="help">*</string>
+    <string name="currentSubText">Your current subscription:</string>
+    <string name="changeSubText">Change subscription:</string>
+    <string name="freeText">FREE: $0/month\nYou can upload one photo per day and you cannot change
+    the description or the hashtags once the photo is uploaded.</string>
+    <string name="premiumText">PREMIUM: $4.99/month\nYou can upload 10 photos per week and you can
+    change the description and hashtags one time once the photo is uploaded.</string>
+    <string name="goldText">GOLD: $9.95/month\nYou can upload as many photos as you want and you can
+    change the description and hashtags as many times as you want once the photo is uploaded.</string>
+    <string name="changeSub">Change</string>
 </resources>

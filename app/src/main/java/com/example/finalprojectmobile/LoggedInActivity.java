@@ -17,8 +17,17 @@ public class LoggedInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_logged_in);
 
         User user = (User)getIntent().getSerializableExtra("User");
-        TextView tv = (TextView)findViewById(R.id.loggedUser);
-        tv.setText(user.getUsername());
+        TextView username = (TextView)findViewById(R.id.loggedUser);
+        TextView title = (TextView)findViewById(R.id.welcome);
+        TextView profileButton = (TextView)findViewById(R.id.profile);
+        if(user.getUsername().equals("AnonymousUser")){
+            title.setText(R.string.welcomeAnonymous);
+            profileButton.setText(R.string.registerButton);
+        } else{
+            title.setText(R.string.welcomeBack);
+            username.setText(user.getUsername());
+            profileButton.setText(R.string.profile);
+        }
     }
 
     public void goToListUsersActivity(View view){
@@ -26,5 +35,17 @@ public class LoggedInActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ListUsersActivity.class);
         intent.putExtra("User", user);
         startActivity(intent);
+    }
+
+    public void goToProfileActivity(View view){
+        User user = (User)getIntent().getSerializableExtra("User");
+        if(user.getUsername().equals("AnonymousUser")){
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        } else{
+            Intent intent = new Intent(this, ProfileActivity.class);
+            intent.putExtra("User", user);
+            startActivity(intent);
+        }
     }
 }

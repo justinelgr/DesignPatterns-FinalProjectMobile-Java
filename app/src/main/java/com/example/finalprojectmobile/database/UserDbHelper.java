@@ -57,19 +57,24 @@ public class UserDbHelper extends SQLiteOpenHelper {
         long newRowId = db.insert(UserContract.UserEntry.TABLE_NAME, null, values);
     }
 
+    public void deleteUser(SQLiteDatabase db, String username){
+        String query = "DELETE FROM " + UserContract.UserEntry.TABLE_NAME + " WHERE username = '" + username + "'";
+        db.execSQL(query);
+    }
+
     public String displayUsers(SQLiteDatabase db){
         List<User> users = new ArrayList<User>();
         Cursor cursor = db.rawQuery(USER_SELECT_ALL, null);
-        String displayUsers = "Here are the registered users:\n(id | username | password | email | " +
-                "type of registration | user or administrator)\n";
+        String displayUsers = "Here are the registered users:\n\n(id. username | password\nemail | " +
+                "registration | status)\n\n";
         cursor.moveToFirst();
         for(int i = 0; i < cursor.getCount(); i++){
             String isAdministrator = "User";
             if(cursor.getInt(5) == 1){
                 isAdministrator = "Administrator";
             }
-            displayUsers += cursor.getInt(0) + " " + cursor.getString(1) + " | " +
-                cursor.getString(2) + " | " + cursor.getString(3) + " | " + cursor.getString(4) +
+            displayUsers += cursor.getInt(0) + ". " + cursor.getString(1) + " | " +
+                cursor.getString(2) + "\n" + cursor.getString(3) + " | " + cursor.getString(4) +
                     " | " + isAdministrator + "\n";
             cursor.moveToNext();
         }
@@ -103,9 +108,9 @@ public class UserDbHelper extends SQLiteOpenHelper {
             user.setEmail(cursor.getString(3));
             String type = cursor.getString(4);
             if(type == "FREE"){
-                user.setType(2131230831);
+                user.setType(User.FREEint);
             } else if(type == "PREMIUM"){
-                user.setType(2131230882);
+                user.setType(User.PREMIUMint);
             } else {
                 user.setType(0);
             }
@@ -116,5 +121,11 @@ public class UserDbHelper extends SQLiteOpenHelper {
             return notFound;
         }
         return user;
+    }
+
+    public void changeType(SQLiteDatabase db, User user){
+        String query = "UPDATE " + UserContract.UserEntry.TABLE_NAME + " SET type = '" +
+        user.getType() + "' WHERE username = '" + user.getUsername() + "'";
+        db.execSQL(query);
     }
 }
