@@ -35,4 +35,11 @@ public class ProfileActivity extends AppCompatActivity {
         intent.putExtra("User", user);
         startActivity(intent);
     }
+
+    public void goBackToHome(View view){
+        User user = (User)getIntent().getSerializableExtra("User");
+        Intent intent = new Intent(this, LoggedInActivity.class);
+        intent.putExtra("User", user);
+        startActivity(intent);
+    }
 }

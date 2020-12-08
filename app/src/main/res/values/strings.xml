@@ -31,4 +31,5 @@
     <string name="goldText">GOLD: $9.95/month\nYou can upload as many photos as you want and you can
     change the description and hashtags as many times as you want once the photo is uploaded.</string>
     <string name="changeSub">Change</string>
+    <string name="back">Back to home</string>
 </resources>

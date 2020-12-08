@@ -75,7 +75,7 @@ public class UserDbHelper extends SQLiteOpenHelper {
             }
             displayUsers += cursor.getInt(0) + ". " + cursor.getString(1) + " | " +
                 cursor.getString(2) + "\n" + cursor.getString(3) + " | " + cursor.getString(4) +
-                    " | " + isAdministrator + "\n";
+                    " | " + isAdministrator + "\n\n";
             cursor.moveToNext();
         }
         return displayUsers;
@@ -87,7 +87,7 @@ public class UserDbHelper extends SQLiteOpenHelper {
         String displayUsernames = "";
         cursor.moveToFirst();
         for(int i = 0; i < cursor.getCount(); i++){
-            displayUsernames += cursor.getString(1) + "\n";
+            displayUsernames += cursor.getString(1) + "\n\n";
             cursor.moveToNext();
         }
         return displayUsernames;
@@ -107,12 +107,12 @@ public class UserDbHelper extends SQLiteOpenHelper {
             user.setPassword(cursor.getString(2));
             user.setEmail(cursor.getString(3));
             String type = cursor.getString(4);
-            if(type == "FREE"){
-                user.setType(User.FREEint);
-            } else if(type == "PREMIUM"){
-                user.setType(User.PREMIUMint);
+            if(type.equals("Free")){
+                user.setType("free");
+            } else if(type.equals("Premium ($4.99/month)")){
+                user.setType("premium");
             } else {
-                user.setType(0);
+                user.setType("gold");
             }
             user.setAdministrator(cursor.getInt((5)));
         } else {

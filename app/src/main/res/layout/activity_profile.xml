@@ -7,6 +7,21 @@
     tools:context=".ProfileActivity">
 
     <TextView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goBackToHome"
+        android:text="@string/back"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/loggedUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029999971" />
+
+    <TextView
         android:id="@+id/loggedUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,6 +53,7 @@
         android:onClick="goToSubscriptionTypeActivity"
         android:text="@string/help"
         android:textSize="20sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/photosScroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"

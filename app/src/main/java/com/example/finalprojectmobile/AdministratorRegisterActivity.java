@@ -58,7 +58,7 @@ public class AdministratorRegisterActivity extends AppCompatActivity {
                     wrongEmail.show();
                 } else { //---------------------------------------------------- Email
                     user.setEmail(email.getText().toString());
-                    user.setType(User.FREEint);
+                    user.setType("free");
                     dbHelper.addUser(db, user);
                     Intent intent = new Intent(this, NewUserActivity.class);
                     intent.putExtra("User", user);

@@ -5,8 +5,6 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     public enum UserType {FREE, PREMIUM, GOLD};
-    public static int FREEint = 2131230831;
-    public static int PREMIUMint = 2131230882;
 
     // private field that refers to the object
     private static User singleUser;
@@ -38,16 +36,14 @@ public class User implements Serializable {
     public String getType(){
         return String.valueOf(this.type);
     }
-    public void setType(int selectedType){
-        UserType uType;
-        if(selectedType == FREEint){
-            uType = UserType.FREE;
-        } else if (selectedType == PREMIUMint){
-            uType = UserType.PREMIUM;
+    public void setType(String selectedType){
+        if(selectedType.equals("Free")){
+            this.type = UserType.FREE;
+        } else if (selectedType.equals("Premium ($4.99/month)")){
+            this.type = UserType.PREMIUM;
         } else{
-            uType = UserType.GOLD;
+            this.type = UserType.GOLD;
         }
-        this.type = uType;
     }
     public int getAdministrator(){
         return this.administrator;

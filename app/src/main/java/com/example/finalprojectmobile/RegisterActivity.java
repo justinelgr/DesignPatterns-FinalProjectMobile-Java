@@ -14,6 +14,8 @@ import com.example.finalprojectmobile.database.UserDbHelper;
 import com.example.finalprojectmobile.user.User;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.Console;
+
 public class RegisterActivity extends AppCompatActivity {
 
     //public final static String MESSAGE_KEY ="com.example.finaleprojectmobile.message_key";
@@ -68,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Snackbar.LENGTH_LONG);
                         wrongType.show();
                     } else{ //------------------------------------------------------ Type
-                        user.setType(selectedTypeID);
+                        user.setType((String)selectedType.getText());
                         dbHelper.addUser(db, user);
                         Intent intent = new Intent(this, NewUserActivity.class);
                         intent.putExtra("User", user);

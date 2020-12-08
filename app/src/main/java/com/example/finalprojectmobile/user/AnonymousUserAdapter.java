@@ -1,7 +1,5 @@
 package com.example.finalprojectmobile.user;
 
-import static com.example.finalprojectmobile.user.User.FREEint;
-
 public class AnonymousUserAdapter {
 
     public final User user;
@@ -14,6 +12,6 @@ public class AnonymousUserAdapter {
         user.setUsername(anonymousUser.getAnonymousUsername());
         user.setEmail(null);
         user.setPassword(null);
-        user.setType(FREEint);
+        user.setType("free");
     }
 }
