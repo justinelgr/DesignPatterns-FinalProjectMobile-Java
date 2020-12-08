@@ -48,4 +48,11 @@ public class LoggedInActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void goToUploadActivity(View view){
+        User user = (User)getIntent().getSerializableExtra("User");
+        Intent intent = new Intent(this, NewPhotoActivity.class);
+        intent.putExtra("User", user);
+        startActivity(intent);
+    }
 }

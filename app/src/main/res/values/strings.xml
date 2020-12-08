@@ -32,4 +32,8 @@
     change the description and hashtags as many times as you want once the photo is uploaded.</string>
     <string name="changeSub">Change</string>
     <string name="back">Back to home</string>
+    <string name="uploadNew">Upload a new photo</string>
+    <string name="upload">Upload</string>
+    <string name="description">Description</string>
+    <string name="hashtags">Hashtags (seperated by a ,)</string>
 </resources>

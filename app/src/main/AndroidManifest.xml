@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SubscriptionTypeActivity"></activity>
+        <activity android:name=".NewPhotoActivity"></activity>
+        <activity android:name=".SubscriptionTypeActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".AdministratorRegisterActivity" />
         <activity android:name=".AdministratorLoginActivity" />
