@@ -36,4 +36,5 @@
     <string name="upload">Upload</string>
     <string name="description">Description</string>
     <string name="hashtags">Hashtags (seperated by a ,)</string>
+    <string name="choose">Choose image</string>
 </resources>

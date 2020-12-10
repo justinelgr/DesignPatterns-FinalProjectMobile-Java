@@ -16,16 +16,20 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
 
+    User user;
+    UserDbHelper dbHelper;
+    SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        dbHelper = new UserDbHelper(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
     }
 
     public void goToLoggedInActivity(View view){
-        UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
         Snackbar wrongLogin = Snackbar.make(view, "Username or password is incorrect please try again", Snackbar.LENGTH_LONG);
 
         EditText username = (EditText)findViewById(R.id.username);
@@ -33,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         String usernameStr = username.getText().toString();
         String passwordStr = password.getText().toString();
 
-        User user = dbHelper.findUser(db, usernameStr);
+        user = dbHelper.findUser(db, usernameStr);
         String dataUsername = user.getUsername();
         String dataPassword = user.getPassword();
 
@@ -59,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         AnonymousUser au = new AnonymousUser();
         AnonymousUserAdapter aua = new AnonymousUserAdapter();
         aua.MakeUserAnonymous(au);
-        User user = aua.user;
+        user = aua.user;
         Intent intent = new Intent(this, LoggedInActivity.class);
         intent.putExtra("User", user);
         startActivity(intent);

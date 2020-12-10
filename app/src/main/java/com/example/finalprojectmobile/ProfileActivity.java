@@ -13,12 +13,14 @@ import org.w3c.dom.Text;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        User user = (User)getIntent().getSerializableExtra("User");
+        user = (User)getIntent().getSerializableExtra("User");
         TextView username = (TextView)findViewById(R.id.loggedUser);
         TextView type = (TextView)findViewById(R.id.subscriptionType);
         TextView isAdministrator = (TextView)findViewById(R.id.isAdministrator);
@@ -30,14 +32,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void goToSubscriptionTypeActivity(View view){
-        User user = (User)getIntent().getSerializableExtra("User");
         Intent intent = new Intent(this, SubscriptionTypeActivity.class);
         intent.putExtra("User", user);
         startActivity(intent);
     }
 
     public void goBackToHome(View view){
-        User user = (User)getIntent().getSerializableExtra("User");
         Intent intent = new Intent(this, LoggedInActivity.class);
         intent.putExtra("User", user);
         startActivity(intent);

@@ -16,12 +16,18 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class SubscriptionTypeActivity extends AppCompatActivity {
 
+    User user;
+    UserDbHelper dbHelper;
+    SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscription_type);
 
-        User user = (User)getIntent().getSerializableExtra("User");
+        dbHelper = new UserDbHelper(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
+        user = (User)getIntent().getSerializableExtra("User");
         TextView username = (TextView)findViewById(R.id.username);
         TextView subscription = (TextView)findViewById(R.id.currentSub);
 
@@ -30,10 +36,6 @@ public class SubscriptionTypeActivity extends AppCompatActivity {
     }
 
     public void changeSubscription(View view){
-        UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        User user = (User)getIntent().getSerializableExtra("User");
-
         RadioGroup typeButton = (RadioGroup)findViewById(R.id.subscription);
         int selectedTypeID = typeButton.getCheckedRadioButtonId();
         RadioButton selectedType = (RadioButton)findViewById(selectedTypeID);

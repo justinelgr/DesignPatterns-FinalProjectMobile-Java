@@ -18,20 +18,22 @@ import java.io.Console;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    //public final static String MESSAGE_KEY ="com.example.finaleprojectmobile.message_key";
+    User user;
+    UserDbHelper dbHelper;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        dbHelper = new UserDbHelper(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
+        user = User.getInstance();
+        user.setAdministrator(0);
     }
 
     public void goToNewUserActivity(View view){
-        UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        User user = User.getInstance();
-        user.setAdministrator(0);
-
         EditText username = (EditText)findViewById(R.id.username);
         EditText password = (EditText)findViewById(R.id.password);
         EditText email = (EditText)findViewById(R.id.email);

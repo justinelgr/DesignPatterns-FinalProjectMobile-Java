@@ -15,16 +15,20 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class AdministratorLoginActivity extends AppCompatActivity {
 
+    User user;
+    UserDbHelper dbHelper;
+    SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrator_login);
+
+        dbHelper = new UserDbHelper(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
     }
 
     public void goToLoggedInActivity(View view){
-        UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
         Snackbar wrongLogin = Snackbar.make(view, "Username or password is incorrect please try again", Snackbar.LENGTH_LONG);
 
         EditText username = (EditText)findViewById(R.id.username);
@@ -32,7 +36,7 @@ public class AdministratorLoginActivity extends AppCompatActivity {
         String usernameStr = username.getText().toString();
         String passwordStr = password.getText().toString();
 
-        User user = dbHelper.findUser(db, usernameStr);
+        user = dbHelper.findUser(db, usernameStr);
         String dataUsername = user.getUsername();
         String dataPassword = user.getPassword();
 

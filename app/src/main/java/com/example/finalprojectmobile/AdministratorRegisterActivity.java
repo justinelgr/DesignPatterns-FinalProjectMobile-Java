@@ -15,20 +15,25 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class AdministratorRegisterActivity extends AppCompatActivity {
 
+    User user;
+    UserDbHelper dbHelper;
+    SQLiteDatabase db;
+    AdministratorUser admin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrator_register);
+
+        dbHelper = new UserDbHelper(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
+        user = User.getInstance();
+        admin = new AdministratorUser(user);
+        admin.decorate();
+        user = admin.user;
     }
 
     public void goToNewUserActivity(View view) {
-        UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        User user = User.getInstance();
-        AdministratorUser au = new AdministratorUser(user);
-        au.decorate();
-        user = au.user;
-
         EditText username = (EditText) findViewById(R.id.username);
         EditText password = (EditText) findViewById(R.id.password);
         EditText email = (EditText) findViewById(R.id.email);

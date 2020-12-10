@@ -11,17 +11,21 @@ import com.example.finalprojectmobile.user.User;
 
 public class ListUsersActivity extends AppCompatActivity {
 
+    User user;
+    UserDbHelper dbHelper;
+    SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_users);
 
-        User user = (User)getIntent().getSerializableExtra("User");
+        user = (User)getIntent().getSerializableExtra("User");
         TextView username = (TextView)findViewById(R.id.username);
         username.setText(user.getUsername());
 
-        UserDbHelper dbHelper = new UserDbHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        dbHelper = new UserDbHelper(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
 
         TextView list = (TextView)findViewById(R.id.list);
 
