@@ -45,6 +45,36 @@
                 android:textSize="20sp"
                 android:textStyle="italic" />
 
+            <TextView
+                android:id="@+id/saveAsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/saveAs" />
+
+            <RadioGroup
+                android:id="@+id/saveAs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/bmp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bmp" />
+
+                <RadioButton
+                    android:id="@+id/jpeg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jpeg" />
+
+                <RadioButton
+                    android:id="@+id/png"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/png" />
+            </RadioGroup>
+
             <EditText
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
@@ -73,6 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="uploadPhoto"
                 android:text="@string/upload" />
 
         </LinearLayout>

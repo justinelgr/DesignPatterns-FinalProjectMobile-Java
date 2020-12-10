@@ -33,8 +33,16 @@
     <string name="changeSub">Change</string>
     <string name="back">Back to home</string>
     <string name="uploadNew">Upload a new photo</string>
-    <string name="upload">Upload</string>
+    <string name="upload">Upload image</string>
     <string name="description">Description</string>
     <string name="hashtags">Hashtags (seperated by a ,)</string>
     <string name="choose">Choose image</string>
+    <string name="resize">Resize image</string>
+    <string name="width">New width</string>
+    <string name="height">New height</string>
+    <string name="ok">Confirm</string>
+    <string name="saveAs">Save photo as:</string>
+    <string name="bmp">BMP</string>
+    <string name="jpeg">JPEG</string>
+    <string name="png">PNG</string>
 </resources>

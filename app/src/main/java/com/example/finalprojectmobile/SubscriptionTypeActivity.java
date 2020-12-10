@@ -47,8 +47,6 @@ public class SubscriptionTypeActivity extends AppCompatActivity {
             wrongType.show();
         } else { //------------------------------------------------------ Type
             user.setType((String)selectedType.getText());
-            System.out.println((String)selectedType.getText());
-            System.out.println(user.getType());
         }
 
         dbHelper.changeType(db, user);
