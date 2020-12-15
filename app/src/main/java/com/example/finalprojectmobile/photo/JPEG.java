@@ -1,21 +1,20 @@
 package com.example.finalprojectmobile.photo;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import com.example.finalprojectmobile.user.User;
 
-import java.util.List;
-
 public class JPEG implements Photo {
 
     public User author;
-    public Uri uri;
+    public Bitmap bitmap;
     public String description;
     public String[] hashtags;
 
-    public void postNew(User author, Uri uri, String description, String[] hashtags){
+    public void postNew(User author, Bitmap bitmap, String description, String[] hashtags){
         this.author = author;
-        this.uri = uri;
+        this.bitmap = bitmap;
         this.description = description;
         this.hashtags = hashtags;
 
@@ -37,12 +36,12 @@ public class JPEG implements Photo {
         this.author = author;
     }
 
-    public String getUri() {
-        return uri.toString();
+    public String getBitmap() {
+        return bitmap.toString();
     }
 
-    public void setUri(Uri uri) {
-        this.uri = uri;
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public String getDescription() {
@@ -62,6 +61,6 @@ public class JPEG implements Photo {
     }
 
     public String getType(){
-        return "PNG";
+        return "JPEG";
     }
 }

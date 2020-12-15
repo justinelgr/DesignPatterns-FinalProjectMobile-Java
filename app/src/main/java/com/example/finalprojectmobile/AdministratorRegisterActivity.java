@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.finalprojectmobile.database.UserDbHelper;
+import com.example.finalprojectmobile.database.DbHelper;
 import com.example.finalprojectmobile.user.AdministratorUser;
 import com.example.finalprojectmobile.user.User;
 import com.google.android.material.snackbar.Snackbar;
@@ -16,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class AdministratorRegisterActivity extends AppCompatActivity {
 
     User user;
-    UserDbHelper dbHelper;
+    DbHelper dbHelper;
     SQLiteDatabase db;
     AdministratorUser admin;
 
@@ -25,7 +25,7 @@ public class AdministratorRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrator_register);
 
-        dbHelper = new UserDbHelper(getApplicationContext());
+        dbHelper = new DbHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
         user = User.getInstance();
         admin = new AdministratorUser(user);

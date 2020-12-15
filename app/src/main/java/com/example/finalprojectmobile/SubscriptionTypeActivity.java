@@ -10,14 +10,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.finalprojectmobile.database.UserDbHelper;
+import com.example.finalprojectmobile.database.DbHelper;
 import com.example.finalprojectmobile.user.User;
 import com.google.android.material.snackbar.Snackbar;
 
 public class SubscriptionTypeActivity extends AppCompatActivity {
 
     User user;
-    UserDbHelper dbHelper;
+    DbHelper dbHelper;
     SQLiteDatabase db;
 
     @Override
@@ -25,7 +25,7 @@ public class SubscriptionTypeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscription_type);
 
-        dbHelper = new UserDbHelper(getApplicationContext());
+        dbHelper = new DbHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
         user = (User)getIntent().getSerializableExtra("User");
         TextView username = (TextView)findViewById(R.id.username);

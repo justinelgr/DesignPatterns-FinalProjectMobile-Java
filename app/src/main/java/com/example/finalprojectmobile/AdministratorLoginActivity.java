@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.finalprojectmobile.database.UserDbHelper;
+import com.example.finalprojectmobile.database.DbHelper;
 import com.example.finalprojectmobile.user.AdministratorUser;
 import com.example.finalprojectmobile.user.User;
 import com.google.android.material.snackbar.Snackbar;
@@ -16,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class AdministratorLoginActivity extends AppCompatActivity {
 
     User user;
-    UserDbHelper dbHelper;
+    DbHelper dbHelper;
     SQLiteDatabase db;
 
     @Override
@@ -24,12 +24,13 @@ public class AdministratorLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrator_login);
 
-        dbHelper = new UserDbHelper(getApplicationContext());
+        dbHelper = new DbHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
     }
 
     public void goToLoggedInActivity(View view){
         Snackbar wrongLogin = Snackbar.make(view, "Username or password is incorrect please try again", Snackbar.LENGTH_LONG);
+        Snackbar notAdministrator = Snackbar.make(view, "You are not an administrator", Snackbar.LENGTH_LONG);
 
         EditText username = (EditText)findViewById(R.id.username);
         EditText password = (EditText)findViewById(R.id.password);
@@ -40,18 +41,22 @@ public class AdministratorLoginActivity extends AppCompatActivity {
         String dataUsername = user.getUsername();
         String dataPassword = user.getPassword();
 
-        if(dataUsername == "USER NOT FOUND"){ //----- Incorrect username
-            wrongLogin.show();
-        } else { //---------------------------------- Correct username
-            if(!dataPassword.equals(passwordStr)){ //------ Correct username but incorrect password
+        if(user.getAdministrator() != 1){ //--------------- User
+            notAdministrator.show();
+        } else{ //----------------------------------------- Administrator
+            if(dataUsername == "USER NOT FOUND"){ //------- Incorrect username
                 wrongLogin.show();
-            } else{ //------------------------------- Correct username and correct password
-                AdministratorUser au = new AdministratorUser(user);
-                au.decorate();
-                user = au.user;
-                Intent intent = new Intent(this, LoggedInActivity.class);
-                intent.putExtra("User", user);
-                startActivity(intent);
+            } else { //------------------------------------ Correct username
+                if(!dataPassword.equals(passwordStr)){ //-- Incorrect password
+                    wrongLogin.show();
+                } else{ //--------------------------------- Correct password
+                    AdministratorUser au = new AdministratorUser(user);
+                    au.decorate();
+                    user = au.user;
+                    Intent intent = new Intent(this, LoggedInActivity.class);
+                    intent.putExtra("User", user);
+                    startActivity(intent);
+                }
             }
         }
     }

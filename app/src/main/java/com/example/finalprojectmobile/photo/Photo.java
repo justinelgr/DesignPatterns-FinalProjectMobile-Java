@@ -8,12 +8,12 @@ import com.example.finalprojectmobile.user.User;
 import java.util.List;
 
 public interface Photo {
-    void postNew(User author, Uri uri, String description, String[] hashtags);
+    void postNew(User author, Bitmap bitmap, String description, String[] hashtags);
     void changeDescription(String newDescription);
     void changeHashtags(String[] newHasthags);
     User getAuthor();
     String getDescription();
-    String getUri();
+    String getBitmap();
     String[] getHashtags();
     String getType();
 }

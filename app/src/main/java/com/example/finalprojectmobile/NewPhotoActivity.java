@@ -3,10 +3,10 @@ package com.example.finalprojectmobile;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,29 +18,24 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.finalprojectmobile.database.PhotoDbHelper;
-import com.example.finalprojectmobile.photo.PNG;
+import com.example.finalprojectmobile.database.DbHelper;
 import com.example.finalprojectmobile.photo.Photo;
 import com.example.finalprojectmobile.photo.PhotoFactory;
 import com.example.finalprojectmobile.user.User;
 import com.google.android.material.snackbar.Snackbar;
-
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class NewPhotoActivity extends AppCompatActivity{
 
     private static final int RESULT_LOAD_IMAGE = 1;
 
     ImageView image;
+    Bitmap imageBitmap;
     Uri selectedImage;
     Button uploadButton;
     EditText description, hashtags;
     User user;
     TextView username;
-    PhotoDbHelper dbHelper;
+    DbHelper dbHelper;
     SQLiteDatabase db;
 
     @Override
@@ -48,7 +43,7 @@ public class NewPhotoActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_photo);
 
-        dbHelper = new PhotoDbHelper(getApplicationContext());
+        dbHelper = new DbHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
 
         user = (User)getIntent().getSerializableExtra("User");
@@ -72,6 +67,10 @@ public class NewPhotoActivity extends AppCompatActivity{
         if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null){
             selectedImage = data.getData();
             image.setImageURI(selectedImage);
+            imageBitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+            int id = imageBitmap.getGenerationId();
+            System.out.println(imageBitmap);
+            System.out.println(id);
         }
     }
 
@@ -99,11 +98,14 @@ public class NewPhotoActivity extends AppCompatActivity{
             String descriptionStr = (String)description.getText().toString();
             String hashtagsStr = (String)hashtags.getText().toString();
 
-            String listHashtags[] = hashtagsStr.split(",");
+            String listHashtags[] = hashtagsStr.split("#");
+
+            String bitmapStr = imageBitmap.toString();
+            System.out.println(bitmapStr);
 
             PhotoFactory photoFactory = new PhotoFactory();
             Photo photo = photoFactory.getPhoto(type);
-            photo.postNew(user, selectedImage, descriptionStr, listHashtags);
+            photo.postNew(user, imageBitmap, descriptionStr, listHashtags);
 
             dbHelper.addPhoto(db, photo);
 

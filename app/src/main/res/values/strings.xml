@@ -35,7 +35,7 @@
     <string name="uploadNew">Upload a new photo</string>
     <string name="upload">Upload image</string>
     <string name="description">Description</string>
-    <string name="hashtags">Hashtags (seperated by a ,)</string>
+    <string name="hashtags">Hashtags (seperated by a #)</string>
     <string name="choose">Choose image</string>
     <string name="resize">Resize image</string>
     <string name="width">New width</string>
@@ -45,4 +45,7 @@
     <string name="bmp">BMP</string>
     <string name="jpeg">JPEG</string>
     <string name="png">PNG</string>
+    <string name="logout">Log out</string>
+    <string name="cleanUsers">Clean user table</string>
+    <string name="cleanPhotos">Clean photo table</string>
 </resources>

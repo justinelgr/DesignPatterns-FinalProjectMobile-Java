@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.finalprojectmobile.database.UserDbHelper;
+import com.example.finalprojectmobile.database.DbHelper;
 import com.example.finalprojectmobile.user.User;
 
 public class ListUsersActivity extends AppCompatActivity {
 
     User user;
-    UserDbHelper dbHelper;
+    DbHelper dbHelper;
     SQLiteDatabase db;
 
     @Override
@@ -24,7 +24,7 @@ public class ListUsersActivity extends AppCompatActivity {
         TextView username = (TextView)findViewById(R.id.username);
         username.setText(user.getUsername());
 
-        dbHelper = new UserDbHelper(getApplicationContext());
+        dbHelper = new DbHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
 
         TextView list = (TextView)findViewById(R.id.list);

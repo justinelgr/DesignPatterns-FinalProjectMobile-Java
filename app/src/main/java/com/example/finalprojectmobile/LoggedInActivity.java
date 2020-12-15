@@ -54,4 +54,15 @@ public class LoggedInActivity extends AppCompatActivity {
         intent.putExtra("User", user);
         startActivity(intent);
     }
+
+    public void logOut(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToUploadedPhotosActivity(View view){
+        Intent intent = new Intent(this, UploadedPhotosActivity.class);
+        intent.putExtra("User", user);
+        startActivity(intent);
+    }
 }

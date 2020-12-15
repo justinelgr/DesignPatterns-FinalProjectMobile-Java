@@ -34,4 +34,30 @@
         app:layout_constraintTop_toBottomOf="@+id/welcome"
         app:layout_constraintVertical_bias="0.050000012" />
 
+    <TextView
+        android:id="@+id/cleanUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cleanUserTable"
+        android:text="@string/cleanUsers"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <TextView
+        android:id="@+id/cleanPhotos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cleanPhotoTable"
+        android:text="@string/cleanPhotos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

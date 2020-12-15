@@ -10,16 +10,14 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.example.finalprojectmobile.database.UserDbHelper;
+import com.example.finalprojectmobile.database.DbHelper;
 import com.example.finalprojectmobile.user.User;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.io.Console;
 
 public class RegisterActivity extends AppCompatActivity {
 
     User user;
-    UserDbHelper dbHelper;
+    DbHelper dbHelper;
     SQLiteDatabase db;
 
     @Override
@@ -27,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        dbHelper = new UserDbHelper(getApplicationContext());
+        dbHelper = new DbHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
         user = User.getInstance();
         user.setAdministrator(0);
