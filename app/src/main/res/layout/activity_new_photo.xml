@@ -40,8 +40,16 @@
                 android:id="@+id/chooseImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onClickImage"
+                android:onClick="chooseImage"
                 android:text="@string/choose"
+                android:textSize="20sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/displayImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="displayImage"
                 android:textSize="20sp"
                 android:textStyle="italic" />
 

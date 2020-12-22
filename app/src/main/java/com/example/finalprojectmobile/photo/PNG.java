@@ -1,20 +1,17 @@
 package com.example.finalprojectmobile.photo;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-
 import com.example.finalprojectmobile.user.User;
 
 public class PNG implements Photo {
 
     public User author;
-    public Bitmap bitmap;
+    public byte[] image;
     public String description;
     public String[] hashtags;
 
-    public void postNew(User author, Bitmap bitmap, String description, String[] hashtags){
+    public void postNew(User author, byte[] image, String description, String[] hashtags){
         this.author = author;
-        this.bitmap = bitmap;
+        this.image = image;
         this.description = description;
         this.hashtags = hashtags;
 
@@ -36,12 +33,12 @@ public class PNG implements Photo {
         this.author = author;
     }
 
-    public String getBitmap() {
-        return bitmap.toString();
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public String getDescription() {

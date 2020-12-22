@@ -18,7 +18,7 @@ public final class DbContract {
 
         public static final String TABLE_NAME_PHOTO = "photo";
         public static final String COLUMN_NAME_AUTHOR_PHOTO = "author";
-        public static final String COLUMN_NAME_BITMAP_PHOTO = "bitmap";
+        public static final String COLUMN_NAME_BYTE_PHOTO = "bitmap";
         public static final String COLUMN_NAME_DESCRIPTION_PHOTO = "description";
         public static final String COLUMN_NAME_HASHTAGS_PHOTO = "hashtags";
         public static final String COLUMN_NAME_TYPE_PHOTO = "type";

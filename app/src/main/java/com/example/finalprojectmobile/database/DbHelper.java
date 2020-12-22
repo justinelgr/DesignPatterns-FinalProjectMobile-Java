@@ -30,7 +30,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + DbContract.DbEntry.TABLE_NAME_PHOTO + " (" +
                     DbContract.DbEntry._ID + " INTEGER PRIMARY KEY," +
                     DbContract.DbEntry.COLUMN_NAME_AUTHOR_PHOTO + " TEXT," +
-                    DbContract.DbEntry.COLUMN_NAME_BITMAP_PHOTO + " TEXT," +
+                    DbContract.DbEntry.COLUMN_NAME_BYTE_PHOTO + " BLOB," +
                     DbContract.DbEntry.COLUMN_NAME_DESCRIPTION_PHOTO + " TEXT," +
                     DbContract.DbEntry.COLUMN_NAME_HASHTAGS_PHOTO + " TEXT," +
                     DbContract.DbEntry.COLUMN_NAME_TYPE_PHOTO + " TEXT)";
@@ -43,7 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static final String USER_SELECT_ALL = "SELECT * FROM " + DbContract.DbEntry.TABLE_NAME_USER;
 
-    private static final String PHOTO_SELECT_ALL = "SELECT * FROM " + DbContract.DbEntry.TABLE_NAME_PHOTO;
+    public static final String PHOTO_SELECT_ALL = "SELECT * FROM " + DbContract.DbEntry.TABLE_NAME_PHOTO;
 
     public DbHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -94,7 +94,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void addPhoto(SQLiteDatabase db, Photo photo){
         ContentValues values = new ContentValues();
         values.put(DbContract.DbEntry.COLUMN_NAME_AUTHOR_PHOTO, photo.getAuthor().getUsername());
-        values.put(DbContract.DbEntry.COLUMN_NAME_BITMAP_PHOTO, photo.getBitmap());
+        values.put(DbContract.DbEntry.COLUMN_NAME_BYTE_PHOTO, photo.getImage());
         values.put(DbContract.DbEntry.COLUMN_NAME_DESCRIPTION_PHOTO, photo.getDescription());
         String hashtagsStr = "";
         String[] hashtags = photo.getHashtags();
@@ -148,21 +148,9 @@ public class DbHelper extends SQLiteOpenHelper {
         return displayUsernames;
     }
 
-    public String displayPhotosHomePage(SQLiteDatabase db){
+    public int numberPhotos(SQLiteDatabase db){
         Cursor cursor = db.rawQuery(PHOTO_SELECT_ALL, null);
-        cursor.moveToFirst();
-        String displayPhotos = "";
-        for(int i = 0; i < cursor.getCount(); i++){
-            String author = cursor.getString(1);
-            String uri = cursor.getString(2);
-            String description = cursor.getString(3);
-            String hashtags = cursor.getString(4);
-            String type = cursor.getString(5);
-            displayPhotos += author + "~" + uri + "~" + description + "~" + hashtags + "~" +
-                    type + "&";
-            cursor.moveToNext();
-        }
-        return displayPhotos;
+        return cursor.getCount();
     }
 
     public void deleteTable(SQLiteDatabase db){

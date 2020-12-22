@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChoosePhotoActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/beach"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickBeach"
+                android:paddingBottom="10dp"
+                android:src="@drawable/beach" />
+
+            <ImageView
+                android:id="@+id/bridge"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickBridge"
+                android:paddingBottom="10dp"
+                android:src="@drawable/bridge" />
+
+            <ImageView
+                android:id="@+id/cat"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickCat"
+                android:paddingBottom="10dp"
+                android:src="@drawable/cat" />
+
+            <ImageView
+                android:id="@+id/children"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickChildren"
+                android:paddingBottom="10dp"
+                android:src="@drawable/children" />
+
+            <ImageView
+                android:id="@+id/dog"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickDog"
+                android:paddingBottom="10dp"
+                android:src="@drawable/dog" />
+
+            <ImageView
+                android:id="@+id/football"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickFootball"
+                android:paddingBottom="10dp"
+                android:src="@drawable/football" />
+
+            <ImageView
+                android:id="@+id/forest"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickForest"
+                android:paddingBottom="10dp"
+                android:src="@drawable/forest" />
+
+            <ImageView
+                android:id="@+id/girl"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickGirl"
+                android:paddingBottom="10dp"
+                android:src="@drawable/girl" />
+
+            <ImageView
+                android:id="@+id/girl2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickGirl2"
+                android:paddingBottom="10dp"
+                android:src="@drawable/girl2" />
+
+            <ImageView
+                android:id="@+id/horse"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickHorse"
+                android:paddingBottom="10dp"
+                android:src="@drawable/horse" />
+
+            <ImageView
+                android:id="@+id/mountain"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickMountain"
+                android:paddingBottom="10dp"
+                android:src="@drawable/mountain" />
+
+            <ImageView
+                android:id="@+id/subway"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="onClickSubway"
+                android:src="@drawable/subway" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
