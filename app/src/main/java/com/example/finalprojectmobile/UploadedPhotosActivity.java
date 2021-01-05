@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -51,8 +52,11 @@ public class UploadedPhotosActivity extends AppCompatActivity {
 
             author.setTextSize(20);
             author.setPadding(0,10,0,0);
+            author.setTextAppearance(getApplicationContext(), R.style.boldText);
             description.setTextSize(20);
             hashtags.setTextSize(20);
+            hashtags.setPadding(0, 0, 0, 10);
+            hashtags.setTextAppearance(getApplicationContext(), R.style.italicText);
 
             author.setText(cursor.getString(1));
             byte[] image = cursor.getBlob(2);
@@ -64,29 +68,5 @@ public class UploadedPhotosActivity extends AppCompatActivity {
             cursor.moveToNext();
         }
 
-        /*
-        String[] listPhotosTab = listPhotos.split("&");
-        for (int i = 0; i < listPhotosTab.length; i ++) {
-            System.out.println(listPhotosTab[i]);
-            String[] photoDetails = listPhotosTab[i].split("~");
-
-            System.out.println(photoDetails[0]);
-            System.out.println(photoDetails[1]);
-            System.out.println(photoDetails[2]);
-            System.out.println(photoDetails[3]);
-
-            TextView author = new TextView(UploadedPhotosActivity.this);
-            ImageView photo = new ImageView(UploadedPhotosActivity.this);
-            TextView description = new TextView(UploadedPhotosActivity.this);
-            TextView hashtags = new TextView(UploadedPhotosActivity.this);
-
-            linearLayout.addView(author);
-            linearLayout.addView(photo);
-            linearLayout.addView(description);
-            linearLayout.addView(hashtags);
-
-            author.setText(photoDetails[0]);
-            Bitmap bm = BitmapFactory.decodeByteArray(photoDetails[1], 0 , photoDetails[1].length);
-        }*/
     }
 }

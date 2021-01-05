@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.finalprojectmobile.user.User;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoggedInActivity extends AppCompatActivity {
 
@@ -50,9 +51,14 @@ public class LoggedInActivity extends AppCompatActivity {
     }
 
     public void goToUploadActivity(View view){
-        Intent intent = new Intent(this, NewPhotoActivity.class);
-        intent.putExtra("User", user);
-        startActivity(intent);
+        if(user.getUsername().equals("AnonymousUser")){
+            Snackbar anonymousUser = Snackbar.make(view, "Anonymous users cannot upload photos", Snackbar.LENGTH_LONG);
+            anonymousUser.show();
+        } else{
+            Intent intent = new Intent(this, NewPhotoActivity.class);
+            intent.putExtra("User", user);
+            startActivity(intent);
+        }
     }
 
     public void logOut(View view){
