@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 
 import com.example.finalprojectmobile.photo.Photo;
+import com.example.finalprojectmobile.photo.PhotoFactory;
 import com.example.finalprojectmobile.user.User;
 
 import java.util.ArrayList;
@@ -188,5 +189,27 @@ public class DbHelper extends SQLiteOpenHelper {
         String query = "UPDATE " + DbContract.DbEntry.TABLE_NAME_USER + " SET type = '" +
         user.getType() + "' WHERE username = '" + user.getUsername() + "'";
         db.execSQL(query);
+    }
+
+    public Photo[] getPhotos(SQLiteDatabase db){
+        Cursor cursor = db.rawQuery(PHOTO_SELECT_ALL, null);
+        Photo[] photos = new Photo[cursor.getCount()];
+        cursor.moveToFirst();
+        for(int i = 0; i < cursor.getCount(); i++){
+            String author = cursor.getString(1);
+            User user = findUser(db, author);
+            byte[] image = cursor.getBlob(2);
+            String description = cursor.getString(3);
+            String hashtagsStr = cursor.getString(4);
+            String[] hashtags = hashtagsStr.split("#");
+            String type = cursor.getString(5);
+
+            PhotoFactory photoFactory = new PhotoFactory();
+            Photo photo = photoFactory.getPhoto(type);
+            photo.postNew(user, image, description, hashtags);
+            photos[i] = photo;
+            cursor.moveToNext();
+        }
+        return photos;
     }
 }

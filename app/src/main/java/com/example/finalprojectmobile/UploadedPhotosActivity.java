@@ -2,12 +2,14 @@ package com.example.finalprojectmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -68,5 +70,15 @@ public class UploadedPhotosActivity extends AppCompatActivity {
             cursor.moveToNext();
         }
 
+    }
+
+    public void goToSearchHashtagActivity(View view){
+        EditText hashtagText = (EditText) findViewById(R.id.searchHashtag);
+        String hashtag = hashtagText.getText().toString();
+
+        Intent intent = new Intent(this, SearchHashtagActivity.class);
+        intent.putExtra("Hashtag", hashtag);
+        intent.putExtra("User", user);
+        startActivity(intent);
     }
 }
