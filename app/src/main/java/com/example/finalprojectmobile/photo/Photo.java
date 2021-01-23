@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface Photo {
     void postNew(User author, byte[] image, String description, String[] hashtags);
-    void changeDescription(String newDescription);
-    void changeHashtags(String[] newHasthags);
+    Photo addFilter();
     User getAuthor();
     String getDescription();
+    void setDescription(String description);
     byte[] getImage();
     String[] getHashtags();
     String getType();

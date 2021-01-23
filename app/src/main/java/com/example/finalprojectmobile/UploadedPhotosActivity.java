@@ -9,12 +9,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.finalprojectmobile.database.DbHelper;
+import com.example.finalprojectmobile.photo.Photo;
+import com.example.finalprojectmobile.photo.PhotoFacade;
+import com.example.finalprojectmobile.photo.PhotoFactory;
 import com.example.finalprojectmobile.user.User;
 
 
@@ -67,9 +71,32 @@ public class UploadedPhotosActivity extends AppCompatActivity {
             description.setText(cursor.getString(3));
             hashtags.setText(cursor.getString(4));
 
+            if(cursor.getString(1).equals(user.getUsername())){
+                Button addFilterButton = new Button(UploadedPhotosActivity.this);
+                linearLayout.addView(addFilterButton);
+                addFilterButton.setTextSize(20);
+                addFilterButton.setText("Add filter");
+
+                PhotoFactory photoFactory = new PhotoFactory();
+                final Photo photoFiltered = photoFactory.getPhoto(cursor.getString(5));
+                User userPhoto = dbHelper.findUser(db, cursor.getString(1));
+                String[] listHashtags = cursor.getString(4).split("#");
+                photoFiltered.postNew(userPhoto, image, cursor.getString(3), listHashtags);
+                photoFiltered.addFilter();
+                final String descriptionStr = cursor.getString(3);
+                final Intent intent = new Intent(this, UploadedPhotosActivity.class);
+
+                addFilterButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dbHelper.updatePhoto(db, descriptionStr, photoFiltered);
+                        intent.putExtra("User", user);
+                        startActivity(intent);
+                    }
+                });
+            }
             cursor.moveToNext();
         }
-
     }
 
     public void goToSearchHashtagActivity(View view){

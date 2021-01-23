@@ -113,11 +113,6 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    public void deletePhoto(SQLiteDatabase db, String uri){
-        String query = "DELETE FROM " + DbContract.DbEntry.TABLE_NAME_PHOTO + " WHERE uri = '" + uri + "'";
-        db.execSQL(query);
-    }
-
     public String displayUsers(SQLiteDatabase db){
         List<User> users = new ArrayList<User>();
         Cursor cursor = db.rawQuery(USER_SELECT_ALL, null);
@@ -211,5 +206,11 @@ public class DbHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         return photos;
+    }
+
+    public void updatePhoto(SQLiteDatabase db, String description, Photo photo){
+        String query = "UPDATE " + DbContract.DbEntry.TABLE_NAME_PHOTO + " SET description = '" +
+                photo.getDescription() + "' WHERE description = '" + description + "'";
+        db.execSQL(query);
     }
 }

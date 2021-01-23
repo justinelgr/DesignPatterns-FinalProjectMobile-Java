@@ -7,18 +7,12 @@ import com.example.finalprojectmobile.database.DbHelper;
 
 public class PhotoFacade {
 
-    public Photo[] searchHashtag(Photo[] photos, String hashtag){
-            Photo[] result = new Photo[photos.length];
-            int count = 0;
-            for(int i = 0; i < photos.length; i ++){
-                String[] hashtags = photos[i].getHashtags();
-                for(int j = 0; j < hashtags.length; j++){
-                    if(hashtags[j].equals(hashtag)){
-                        result[count] = photos[i];
-                        count ++;
-                    }
-                }
+    public boolean searchHashtag(Photo photo, String hashtag){
+        for(int j = 0; j < photo.getHashtags().length; j++){
+            if(photo.getHashtags()[j].equals(hashtag)){
+                return true;
             }
-            return result;
+        }
+        return false;
     }
 }

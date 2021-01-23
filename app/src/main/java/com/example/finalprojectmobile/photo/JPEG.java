@@ -17,12 +17,10 @@ public class JPEG implements Photo {
 
     }
 
-    public void changeDescription(String newDescription){
-        this.description = newDescription;
-    }
-
-    public void changeHashtags(String[] newHashtags){
-        this.hashtags = newHashtags;
+    public Photo addFilter(){
+        Photo photoFilter = this;
+        photoFilter.setDescription(this.getDescription() + "\n[FILTERED]");
+        return photoFilter;
     }
 
     public User getAuthor() {
